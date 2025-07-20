@@ -1,0 +1,13 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+  text-align: center;
+  background: #f0f0f0;
+}
+
+canvas {
+  background: #fff;
+  border: 1px solid #ccc;
+  display: block;
+  margin: 0 auto;
+}
