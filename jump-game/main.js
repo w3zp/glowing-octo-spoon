@@ -40,8 +40,16 @@ const obstacle = Bodies.rectangle(width + 50, height - 60, 40, 40, {
 World.add(world, [ground, player, obstacle]);
 
 // jump on space or up arrow
+function isJumpKey(event) {
+  // "code" is not supported in older Safari versions so fall back to
+  // checking "key" and "keyCode" for better cross-browser support
+  return event.code === 'Space' || event.code === 'ArrowUp' ||
+         event.key === ' ' || event.key === 'Spacebar' || event.key === 'ArrowUp' ||
+         event.keyCode === 32 || event.keyCode === 38;
+}
+
 function handleKey(event) {
-  if (event.code === 'Space' || event.code === 'ArrowUp') {
+  if (isJumpKey(event)) {
     const onGround = player.position.y >= height - 60;
     if (onGround) {
       Body.setVelocity(player, { x: player.velocity.x, y: -12 });
